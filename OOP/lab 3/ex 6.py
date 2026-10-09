@@ -22,7 +22,6 @@ class Dairy(Food):
         self.fat_percent, self.shelf_days, self.dairy_type = fat_percent, shelf_days, dairy_type
 
     def is_fresh(self, days):
-        """days — сколько дней прошло с производства."""
         return days <= self.shelf_days
 
     def label(self):
@@ -44,7 +43,6 @@ class Bakery(Food):
                 f'состав: {", ".join(self.ingredients)}')
 
     def calories_per_serving(self, serving_g=None):
-        # по умолчанию считаем всю единицу изделия
         return super().calories_per_serving(serving_g or self.weight_g)
 
 products = [

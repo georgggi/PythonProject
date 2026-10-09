@@ -1,5 +1,5 @@
 class Appliance:
-    ENERGY = ['C', 'B', 'A', 'A+', 'A++']   # от худшего к лучшему
+    ENERGY = ['C', 'B', 'A', 'A+', 'A++']
 
     def __init__(self, brand, power_w, price, energy_class):
         self.brand, self.power_w = brand, power_w
@@ -40,7 +40,6 @@ class Refrigerator(Appliance):
                 f'камер: {self.chambers} | морозилка {self.freezer_t}°C')
 
     def energy_cost(self, hours, rate):
-        # холодильник работает циклами, примерно 40% времени
         return super().energy_cost(hours, rate) * 0.4
 
 w1 = WashingMachine('LG', 2000, 35000, 'A+', 8, ['хлопок', 'синтетика', 'быстрая'], 90)

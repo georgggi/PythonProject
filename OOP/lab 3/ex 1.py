@@ -1,5 +1,5 @@
 class Employee:
-    total_employees = 0  # счётчик всех сотрудников
+    total_employees = 0
 
     def __init__(self, name, position, base_salary, experience):
         if base_salary <= 0:
@@ -25,8 +25,6 @@ class Employee:
 
 
 class Manager(Employee):
-    """Менеджер: зарплата + % бонуса."""
-
     def __init__(self, name, position, base_salary, experience,
                  department, subordinates, bonus_percent):
         super().__init__(name, position, base_salary, experience)
@@ -84,6 +82,6 @@ print(f'\nЗарплатный фонд: {payroll:.0f} сом')
 top = max(team, key=lambda e: e.salary())
 print(f'Самая высокая зарплата: {top.name} — {top.salary():.0f} сом')
 
-print(isinstance(team[1], Employee))       # True
-print(issubclass(Developer, Employee))     # True
-print(isinstance(team[3], Manager))        # False
+print(isinstance(team[1], Employee))
+print(issubclass(Developer, Employee))
+print(isinstance(team[3], Manager))
