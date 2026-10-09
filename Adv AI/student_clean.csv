@@ -1,0 +1,12 @@
+Student,Age,Attendance,Average_Score,Study_Hours,High_Score,Score_Category
+Student_1,19.0,92.0,86.0,8,Yes,High
+Student_2,20.0,75.0,68.0,4,No,Low
+Student_3,45.44444444444444,98.0,91.0,10,Yes,High
+Student_4,21.0,65.0,85.8,3,Yes,High
+Student_5,24.988888888888887,70.0,72.0,5,Yes,Middle
+Student_6,19.0,79.26,95.0,9,Yes,High
+Student_7,20.0,88.0,82.0,7,Yes,Middle
+Student_8,45.44444444444444,79.0,71.0,5,Yes,Middle
+Student_9,18.0,81.6,78.0,6,Yes,Middle
+Student_10,21.0,72.0,79.38,12,Yes,Middle
+Student_10,21.0,72.0,65.0,4,No,Low

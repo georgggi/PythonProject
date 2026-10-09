@@ -1,0 +1,61 @@
+import numpy as np, pandas as pd, matplotlib.pyplot as plt, seaborn as sns
+data = {
+    'Student': ['Student_1', 'Student_2', 'Student_3', 'Student_4', 'Student_5',
+                'Student_6', 'Student_7', 'Student_8', 'Student_9', 'Student_10'],
+    'Age': [19, 20, 18, 21, 19, 20, 18, 22, 19, 21],
+    'Attendance': [92, 75, 98, 65, 88, 79, 95, 60, 84, 72],
+    'Average_Score': [86, 68, 91, 59, 82, 71, 94, 55, 78, 65],
+    'Study_Hours': [8, 4, 10, 3, 7, 5, 9, 2, 6, 4]
+}
+df = pd.DataFrame(data)
+print(df.head(), df.head(3), sep='\n')
+print(df.tail(), df.tail(3), sep='\n')
+print("Количество строк:", df.shape[0])
+print("Количество столбцов:", df.shape[1])
+df.info()
+print("Средний возраст студентов:", df['Age'].mean())
+print("Средняя посещаемость:", df['Attendance'].mean())
+print("Средний балл:", df['Average_Score'].mean())
+print("Максимальный балл:", df['Average_Score'].max())
+print("Минимальная посещаемость:", df['Attendance'].min())
+print("Максимальное количество часов подготовки:", df['Study_Hours'].max())
+print(df.isnull().sum())
+print("Топ-3 студентов по среднему баллу:", df.sort_values('Average_Score', ascending=False).head(3), "Топ-3 студентов по посещаемости:", df.sort_values('Attendance', ascending=False).head(3), "Три студента с наименьшим количеством часов подготовки:", df.sort_values('Study_Hours').head(3), sep='\n')
+print("а) студенты, которые занимаются более 5 часов:", df[df['Study_Hours'] > 5], "б) студенты с посещаемостью более 90%:", df[df['Attendance'] > 90], "в) студенты со средним баллом меньше 70:", df[df['Average_Score'] < 70], sep='\n')
+plt.figure(figsize=(10, 5))
+plt.bar(df['Student'], df['Attendance'])
+plt.title('Посещаемость студентов')
+plt.xlabel('Студент')
+plt.ylabel('Посещаемость, %')
+plt.xticks(rotation=45)
+plt.show()
+plt.figure(figsize=(8, 5))
+plt.hist(df['Average_Score'], bins=5)
+plt.title('Распределение среднего балла')
+plt.xlabel('Средний балл')
+plt.ylabel('Количество студентов')
+plt.show()
+plt.figure(figsize=(8, 5))
+plt.scatter(df['Study_Hours'], df['Average_Score'])
+plt.title('Связь между подготовкой и средним баллом')
+plt.xlabel('Часы подготовки')
+plt.ylabel('Средний балл')
+plt.show()
+print(df.corr(numeric_only=True))
+plt.figure(figsize=(8, 6))
+sns.heatmap(df.corr(numeric_only=True), annot=True, fmt='.2f')
+plt.title('Корреляция между признаками')
+plt.show()
+print("1. Средняя посещаемость:", df['Attendance'].mean())
+print("2. Средний балл:", df['Average_Score'].mean())
+best = df.loc[df['Average_Score'].idxmax()]
+print("3. Самый высокий балл:", best['Student'], "-", best['Average_Score'])
+worst_att = df.loc[df['Attendance'].idxmin()]
+print("4. Самая низкая посещаемость:", worst_att['Student'], "-", worst_att['Attendance'], "%")
+print("5. Студенты, которые занимаются менее 4 часов:", df[df['Study_Hours'] < 4], sep='\n')
+corr = df.corr(numeric_only=True)
+pairs = corr.where(np.triu(np.ones(corr.shape), k=1).astype(bool)).stack().dropna()
+print("Пары признаков по убыванию корреляции:")
+print(pairs.sort_values(ascending=False).round(3))
+df['Result'] = np.where(df['Average_Score'] >= 70,'Pass','Needs_support')
+print(df['Result'].value_counts())
