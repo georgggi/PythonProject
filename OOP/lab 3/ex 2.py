@@ -24,7 +24,7 @@ class BeachTour(TourPackage):
         self.flight, self.meal = flight, meal
 
     def season_discount(self, month):
-        return 15 if month in (9, 10, 11, 4, 5) else (0 if month in (6, 7, 8) else 10)
+        return 15 if month in (4, 5, 9, 10, 11) else (0 if month in (6, 7, 8) else 10)
 
     def total_price(self, persons, month=6):
         k = 1 + (self.STARS[self.hotel] + self.MEALS[self.meal]) / 100
@@ -47,7 +47,7 @@ class AdventureTour(TourPackage):
         self.equipment, self.guide = equipment, guide
 
     def season_discount(self, month):
-        return 20 if month in (12, 1, 2) else (0 if month in (7, 8) else 10)
+        return 20 if month in (1, 2, 12) else (0 if month in (7, 8) else 10)
 
     def total_price(self, persons, month=7):
         k = 1 + self.LEVELS[self.fitness] / 100
