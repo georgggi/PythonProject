@@ -1,7 +1,7 @@
 class Planet:
     body_type = 'Небесное тело'
 
-    def __init__(self, name, diameter_km, mass_earth, moons, has_atmosphere):
+    def __init__(self, name, diameter_km, mass_earth, moons, has_atmosphere=False):
         self.name = name
         self.diameter_km = diameter_km
         self.mass_earth = mass_earth
