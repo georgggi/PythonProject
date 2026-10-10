@@ -1,7 +1,7 @@
 class TariffPlan:
     def __init__(self, name, price, speed_mbps, minutes, sms):
         self.__name = name
-        self.price = price
+        self.__price = price
         self.__speed = speed_mbps
         self.__minutes = minutes
         self.__sms = sms
