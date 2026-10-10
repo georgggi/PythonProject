@@ -10,7 +10,6 @@ class Appliance:
                 f'класс {self.energy_class}')
 
     def energy_cost(self, hours, rate):
-        """Стоимость электроэнергии: кВт·ч × тариф."""
         return self.power_w / 1000 * hours * rate
 
     def compare(self, other):
