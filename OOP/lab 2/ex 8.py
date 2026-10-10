@@ -3,8 +3,8 @@ class HealthMetrics:
         self.__name = name
         self.__age = age
         self.__sex = sex
-        self.height = height_cm
-        self.weight = weight_kg
+        self.__height = height_cm
+        self.__weight = weight_kg
 
     @property
     def height(self):
