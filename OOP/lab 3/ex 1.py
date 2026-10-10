@@ -42,7 +42,7 @@ class Manager(Employee):
                 f'бонус: {self.bonus_percent}%')
 
 class Developer(Employee):
-    LEVELS = {'junior': 0, 'middle': 30, 'senior': 60}  # надбавка, %
+    LEVELS = {'junior': 0, 'middle': 30, 'senior': 60}
 
     def __init__(self, name, position, base_salary, experience,
                  language, level):
