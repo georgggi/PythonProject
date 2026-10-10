@@ -42,7 +42,6 @@ class Manager(Employee):
                 f'бонус: {self.bonus_percent}%')
 
 class Developer(Employee):
-    """Разработчик: надбавка зависит от уровня."""
     LEVELS = {'junior': 0, 'middle': 30, 'senior': 60}  # надбавка, %
 
     def __init__(self, name, position, base_salary, experience,
