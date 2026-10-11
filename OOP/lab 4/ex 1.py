@@ -163,8 +163,3 @@ if __name__ == "__main__":
     print("\nСортировка по массе:")
     for craft in sorted(fleet, key= lambda c: c.mass_kg):
         print(f"  {craft.name:<14s} {craft.mass_kg:>9,.0f} кг")
-
-    try:
-        Spacecraft("Тест", 100)
-    except TypeError as e:
-        print("\nПопытка создать абстрактный класс ->", e)
