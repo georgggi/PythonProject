@@ -41,15 +41,15 @@ plt.xlabel('Часы обучения в неделю')
 plt.ylabel('Средний балл')
 plt.show()
 
-df['Attendance'].corr(df['Average_Score'])
-df['Study_Hours'].corr(df['Average_Score'])
+print(f'Корреляция посещения и средней оценки: {df['Attendance'].corr(df['Average_Score'])}')
+print(f'Корреляция часов учебы и средней оценки: {df['Study_Hours'].corr(df['Average_Score'])}')
 
-df[df['Study_Hours'] > 6]['Average_Score'].mean()
-df[df['Study_Hours'] <= 6]['Average_Score'].mean()
+print(f'Средняя оценка, у кого часы учебы больше 6: {df[df['Study_Hours'] > 6]['Average_Score'].mean()}')
+print(f'Средняя оценка, у кого часы учебы меньше 6: {df[df['Study_Hours'] <= 6]['Average_Score'].mean()}')
 
-df.groupby('Score_Category')[
+print(df.groupby('Score_Category')[
     ['Average_Score', 'Attendance', 'Study_Hours']
-].mean()
+].mean())
 
 print(df[df['Attendance'] < 75])
 
@@ -80,11 +80,11 @@ plt.xlabel('Уровень риска')
 plt.ylabel('Количество студентов')
 plt.show()
 
-print(f'Студент с макс средним баллом: {df.loc[df['Average_Score'].idxmax()]}')
+print(f'Студент с макс средним баллом: \n{df.loc[df['Average_Score'].idxmax()]}')
 
-print(f'Студент с мин посещаемостью: {df.loc[df['Attendance'].idxmin()]}')
+print(f'Студент с мин посещаемостью: \n{df.loc[df['Attendance'].idxmin()]}')
 
-print(f'Студенты, занимающиеся больше 6 ч.: {df[df['Study_Hours'] > 6]}')
+print(f'Студенты, занимающиеся больше 6 ч.: \n{df[df['Study_Hours'] > 6]}')
 
 plt.figure(figsize=(8, 5))
 plt.scatter(df['Study_Hours'], df['Average_Score'])
@@ -100,7 +100,7 @@ plt.xlabel('Посещаемость (%)')
 plt.ylabel('Средний балл')
 plt.show()
 
-df[['Attendance', 'Study_Hours', 'Average_Score']].corr()
+print(df[['Attendance', 'Study_Hours', 'Average_Score']].corr())
 
 fig, ax = plt.subplots(1, 2, figsize=(11, 4.5), sharey=True)
 
