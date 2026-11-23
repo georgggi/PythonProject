@@ -5,7 +5,6 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-# 1. Создание синтетического датасета (500 наблюдений)
 rng = np.random.default_rng(25)
 n = 500
 day = rng.integers(0, 7, n)
@@ -30,23 +29,18 @@ df = pd.DataFrame({
     "is_weekend": is_weekend,
     "weather": weather,
     "is_holiday": is_holiday,
-    "visitors": visitors
-})
+    "visitors": visitors})
 
-# 2. Проверка и очистка данных
 print("Пропуски до очистки:", df.isna().sum().sum())
 print("Дубликаты до очистки:", df.duplicated().sum())
 df = df.drop_duplicates().dropna()
 
-# 3. Признаки и целевая переменная
 X = df[["day_of_week", "month", "is_weekend", "weather", "is_holiday"]]
 y = df["visitors"]
 
-# 4. Разделение на обучающую и тестовую выборки
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.25, random_state=42)
 
-# 5. Обучение двух моделей
 models = {
     "Decision Tree": DecisionTreeRegressor(max_depth=5, random_state=42),
     "Random Forest": RandomForestRegressor(
@@ -63,7 +57,6 @@ for name, model in models.items():
     print("RMSE:", round(rmse, 2))
     print("R2:", round(r2, 3))
 
-# 6. Проверка на пяти новых примерах
 new_data = pd.DataFrame([
     [0, 3, 0, 0, 0],
     [2, 6, 0, 1, 0],
@@ -78,7 +71,6 @@ predictions = best_model.predict(new_data)
 for i, value in enumerate(predictions, start=1):
     print(f"Пример {i}: прогноз — {round(value)} посетителей")
 
-# 7. Демонстрация ввода произвольных признаков
 demo = pd.DataFrame([{
     "day_of_week": 2,
     "month": 10,
